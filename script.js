@@ -28,9 +28,9 @@ var buttonArea = document.querySelector(".container");
 
 buttonArea.addEventListener("click", function(event) {
     var saveBtn = event.target;
-    if (saveBtn.matches("button")) {
+    if (saveBtn.matches(".cusBtn")) {
         event.preventDefault();
-        alert("Works")
+        alert("Planner Saved")
         saveEvent();
         renderEvents();
     }
