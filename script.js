@@ -36,23 +36,23 @@ buttonArea.addEventListener("click", function(event) {
     }
 });
 
-var events = document.querySelector(".description");
-// save events
+// Save Event  
+var events = document.querySelector("textarea");
 function saveEvent() {
     var plannerEvents = events.value;
     localStorage.setItem("plannerEvents", JSON.stringify(plannerEvents));
 }
 
 function renderEvents() {
-  var savedEvents = JSON.parse(localStorage.getItem("plannerEvents"));
-  if (savedEvents !== null) {
-    document.querySelector(".description").innerHTML = savedEvents;
-  }else {
+    var savedEvents = JSON.parse(localStorage.getItem("plannerEvents"));
+    if (savedEvents !== null) {
+    document.querySelector("textarea").innerHTML = savedEvents;
+    }   else {
     return;
-  }
+    }
 }
 
 function init() {
-  renderEvents();
+    renderEvents();
 }
 init();
