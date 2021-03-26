@@ -24,35 +24,33 @@ for (i=0; i < 9; i+=1) {
 }
 
 // save button
-var buttonArea = document.querySelector(".container");
+var saveBtn = $(".cusBtn");
 
-buttonArea.addEventListener("click", function(event) {
-    var saveBtn = event.target;
-    if (saveBtn.matches(".cusBtn")) {
-        event.preventDefault();
-        alert("Planner Saved")
-        saveEvent();
-        renderEvents();
+function hourTextbox() {
+    var hourBox = [
+        "hour-9",
+        "hour-10",
+        "hour-11",
+        "hour-12",
+        "hour-13",
+        "hour-14",
+        "hour-15",
+        "hour-16",
+        "hour-17",
+    ];
+    for (i=0; 1 < 9; i+=1) {
+        var savedEvents = window.localStorage.getItem(hourBox[i]);
+        if (savedEvents === null){
+            return;
+        }
+        console.log(savedEvents)
+        $("#" + hourBox[i] + " > textarea").val(savedEvents);
     }
+};
+hourTextbox()
+
+saveBtn.on("click", function(){
+    var eventText = ($(this)).siblings(".description").val();
+    var eventTextbox = ($(this)).parent("div").attr("id");
+    window.localStorage.setItem(eventTextbox , eventText);
 });
-
-// Save Event  
-var events = document.querySelector("textarea");
-function saveEvent() {
-    var plannerEvents = events.value;
-    localStorage.setItem("plannerEvents", JSON.stringify(plannerEvents));
-}
-
-function renderEvents() {
-    var savedEvents = JSON.parse(localStorage.getItem("plannerEvents"));
-    if (savedEvents !== null) {
-    document.querySelector("textarea").innerHTML = savedEvents;
-    }   else {
-    return;
-    }
-}
-
-function init() {
-    renderEvents();
-}
-init();
