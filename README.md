@@ -13,7 +13,11 @@
 - Using HTTPS key: git clone https://github.com/Eniqma69/DayPlanner.git
 
 ## Usage
-- When you load the webpage the header
+- When you load the webpage the header displays time and day
+- The body contains time stamps from 9am to 5pm
+- You can enter events in each timestamp and save it
+- each Time stamp is color coded green meaning future, gray past and red present.
+
 ## Credits
 - https://www.w3schools.com/javascript/
 - https://www.google.com/
