@@ -4,12 +4,10 @@ function date() { var currentDay = moment().format('dddd, MMMM Do YYYY, h:mm:ss 
 $("#currentDay").text(currentDay);
 }
 setInterval(date, 1000);
-
 // backgroundcolor updater
 var blockHour = 9;
 var hours = $("textarea");
 var blockTime = moment().format("H");
-
 for (i=0; i < 9; i+=1) {
     if (blockHour > blockTime){
         hours.eq(i).addClass("future");
@@ -22,10 +20,8 @@ for (i=0; i < 9; i+=1) {
     }
     blockHour+=1;
 }
-
 // save button
 var saveBtn = $(".cusBtn");
-
 function hourTextbox() {
     var hourBox = [
         "hour-9",
@@ -38,18 +34,13 @@ function hourTextbox() {
         "hour-16",
         "hour-17",
     ];
-    for (i=0; 1 < 9; i+=1) {
+    for (i=0; i < 9; i+=1) {
         var savedEvents = window.localStorage.getItem(hourBox[i]);
-        if (savedEvents === null){
-            return;
-        }
-        console.log(savedEvents)
         $("#" + hourBox[i] + " > textarea").val(savedEvents);
-    }
+    };
 };
-hourTextbox()
-
-saveBtn.on("click", function(){
+hourTextbox();
+saveBtn.on("click", function() {
     var eventText = ($(this)).siblings(".description").val();
     var eventTextbox = ($(this)).parent("div").attr("id");
     window.localStorage.setItem(eventTextbox , eventText);
